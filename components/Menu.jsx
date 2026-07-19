@@ -1,7 +1,47 @@
+import Image from 'next/image'
+import css from '../styles/Menu.module.css'
+import { urlFor } from "../lib/client";
+
 export default function Menu({pizzas}){
     console.log(pizzas)
     return(
-        <div>Menu</div>
+        <div className={CSS.container}>
+
+            <div className={css.heading}>
+                <span>OUR MENU</span>
+                <span>Menu That Always</span>
+                <span>Make You Fall In Love</span>
+            </div>
+
+            <div className={css.menu}>
+
+            {/*pizzas*/ }
+            {pizzas.map((pizza,id)=>{
+
+                const src = urlFor(pizza.image).url()
+                return(
+                    <div className={css.pizza} key={id}>
+
+
+                        <div className={css.ImageWrapper}>
+                            <Image loader = {()=> src} src={src} alt=""
+                            objectFit= "cover"
+                            layout="fill"  
+                                
+                                />
+                            
+                        </div>
+                        <span>{pizza.name}</span>
+                        <sapn><span style={{color: 'var(--themeRed)'}}>$</span> {pizza.price[1]}</sapn>
+
+                    </div>
+                )
+
+            })}
+
+
+        </div>
+    </div>
     )
 
 }
