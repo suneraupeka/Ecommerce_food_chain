@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import css from '../styles/Menu.module.css'
 import { urlFor } from "../lib/client";
+import Link from 'next/link';
+
 
 export default function Menu({pizzas}){
-    console.log(pizzas)
+
     return(
         <div className={CSS.container}>
 
@@ -23,14 +25,19 @@ export default function Menu({pizzas}){
                     <div className={css.pizza} key={id}>
 
 
-                        <div className={css.ImageWrapper}>
-                            <Image loader = {()=> src} src={src} alt=""
-                            objectFit= "cover"
-                            layout="fill"  
-                                
-                                />
-                            
-                        </div>
+                        <Link href={'./pizza/$(pizza.slug.current)'}>
+                            <div className={css.ImageWrapper}>
+                                <Image loader = {()=> src} 
+                                src={src} 
+                                alt=""
+                                objectFit= "cover"
+                                layout="fill"  
+                                    
+                                    />
+
+                             </div>
+                        </Link>
+
                         <span>{pizza.name}</span>
                         <sapn><span style={{color: 'var(--themeRed)'}}>$</span> {pizza.price[1]}</sapn>
 
