@@ -4,10 +4,11 @@ import { urlFor } from "../lib/client";
 import Link from 'next/link';
 
 
+
 export default function Menu({pizzas}){
 
     return(
-        <div className={CSS.container}>
+        <div className = {CSS.container}>
 
             <div className={css.heading}>
                 <span>OUR MENU</span>
@@ -25,7 +26,7 @@ export default function Menu({pizzas}){
                     <div className={css.pizza} key={id}>
 
 
-                        <Link href={'./pizza/$(pizza.slug.current)'}>
+                        <Link href={`./pizza/${pizza.slug.current}`}>
                             <div className={css.ImageWrapper}>
                                 <Image loader = {()=> src} 
                                 src={src} 
